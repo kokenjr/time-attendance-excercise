@@ -26,6 +26,7 @@ describe "TimeClocks" do
     click_button "Clock In/Out"
     page.should have_content("You are clocked out!")
     page.should have_content("Clocked Out: #{user.work_times.last.clocked_out_at}")
+    page.should have_content("Total Time Worked: #{time_diff(user.work_times.last.clocked_out_at, user.work_times.last.clocked_in_at)}")
   end
 
 end
