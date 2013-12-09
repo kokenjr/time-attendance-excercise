@@ -16,11 +16,23 @@ describe TimeClocksController do
         post :create, employee_id: "kokenjr"
         response.should redirect_to :action => "status", :id => user
       end
+      it "clocks user out" do
+        user = FactoryGirl.create(:user, status: "CLOCKED IN")
+        FactoryGirl.create(:work_time, :user => user, :clocked_out_at => nil)
+        post :create, employee_id: "kokenjr"
+        response.should redirect_to :action => "status", :id => user
+      end
     end
 
     context "with invalid attributes" do
       it "does not not clock in" do
         user = FactoryGirl.create(:user)
+        post :create, employee_id: "blahblah"
+        response.should redirect_to root_path
+      end
+      it "does not not clock out" do
+        user = FactoryGirl.create(:user, status: "CLOCKED IN")
+        FactoryGirl.create(:work_time, :user => user, :clocked_out_at => nil)
         post :create, employee_id: "blahblah"
         response.should redirect_to root_path
       end
