@@ -1,3 +1,10 @@
 <h1>Time Status</h1>
 
 <p>You are <%= @user.status.downcase %>!</p>
+
+<% if @user.status.try(:upcase) == "CLOCKED IN" %>
+  Clocked In: <%= @user.work_times.last.clocked_in_at %>
+<% elsif @user.status.try(:upcase) == "CLOCKED OUT" %>
+  Clocked Out: <%= @user.work_times.last.clocked_out_at %> |
+<% end %>
+
