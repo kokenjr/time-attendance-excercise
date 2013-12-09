@@ -8,4 +8,11 @@ FactoryGirl.define do
     status "CLOCKED OUT"
     role "EMPLOYEE"
   end
+  factory :admin, :class => User do
+    employee_id "tdurden"
+    first_name "Tyler"
+    last_name "Durden"
+    status "CLOCKED OUT"
+    role "ADMINISTRATOR"
+  end
 end

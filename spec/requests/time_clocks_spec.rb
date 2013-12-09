@@ -55,4 +55,15 @@ describe "TimeClocks" do
     page.should_not have_content("#{user.first_name} #{user.last_name}")
   end
 
+  it "shows admin work times for all users" do
+    admin = FactoryGirl.create(:admin)
+    FactoryGirl.create(:work_time, :user => admin)
+    user = FactoryGirl.create(:user, :status => "CLOCKED OUT")
+    FactoryGirl.create(:work_time, :user => user)
+    visit root_path
+    fill_in "Employee ID", :with => admin.employee_id
+    page.should have_content("#{user.first_name} #{user.last_name}")
+    page.should have_content("Clocked In: #{user.work_times.last.clocked_in_at} | Clocked Out: #{user.work_times.last.clocked_out_at}")
+  end
+
 end
