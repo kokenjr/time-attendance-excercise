@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :user do
-    employee_id "MyString"
-    first_name "MyString"
-    last_name "MyString"
-    status "MyString"
-    role "MyString"
+    employee_id "kokenjr"
+    first_name "Ken"
+    last_name "Orji"
+    status "CLOCKED OUT"
+    role "EMPLOYEE"
   end
 end
