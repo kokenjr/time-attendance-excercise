@@ -1,0 +1,10 @@
+<h1>Time Clock</h1>
+
+<%= form_tag time_clocks_create_path do %>
+  <div class="field">
+    <%= label_tag :employee_id, "Employee ID" %> <%= text_field_tag :employee_id %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Clock In/Out" %>
+  </div>
+<% end %>

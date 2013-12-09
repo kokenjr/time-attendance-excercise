@@ -12,7 +12,7 @@ describe "TimeClocks" do
     user = FactoryGirl.create(:user)
     visit root_path
     fill_in "Employee ID", :with => user.employee_id
-    click "Clock In/Out"
+    click_button "Clock In/Out"
     page.should have_content("You are clocked in!")
   end
 end
