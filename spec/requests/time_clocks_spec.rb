@@ -36,4 +36,15 @@ describe "TimeClocks" do
     page.should have_content("#{user.first_name} #{user.last_name}")
   end
 
+  it "add user" do
+    visit users_path
+    click_link "Add User"
+    fill_in "First name", :with => "John"
+    fill_in "Last name", :with => "Doe"
+    fill_in "Employee ID", :with => "jdoe"
+    select "EMPLOYEE", :from => "Role"
+    click_button "Add User"
+    page.should have_content("John Doe")
+  end
+
 end
