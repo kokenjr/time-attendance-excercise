@@ -1,4 +1,5 @@
 Listest::Application.routes.draw do
+  resources :users
   root "time_clocks#index"
   get "time_clocks/index"
   post "time_clocks/create"
