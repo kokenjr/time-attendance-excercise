@@ -75,5 +75,15 @@ describe "TimeClocks" do
     click_button "Clock In/Out"
     page.should_not have_content("Users Report")
   end
+  
+  it "provides user with weekly report" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    fill_in "Employee ID", :with => user.employee_id
+    FactoryGirl.create(:work_time, :user => user, :clocked_out_at => nil)
+    click_button "My Weekly Report"
+    page.should have_content("#{user.employee_id}")
+    page.should have_content("Clocked In: #{user.work_times.last.clocked_in_at} | Clocked Out: #{user.work_times.last.clocked_out_at}")
+  end
 
 end
