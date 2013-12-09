@@ -47,4 +47,12 @@ describe "TimeClocks" do
     page.should have_content("John Doe")
   end
 
+  it "deletes user" do
+    user = FactoryGirl.create(:user)
+    visit users_path
+    click_link "Delete"
+    page.should have_content("Users")
+    page.should_not have_content("#{user.first_name} #{user.last_name}")
+  end
+
 end
