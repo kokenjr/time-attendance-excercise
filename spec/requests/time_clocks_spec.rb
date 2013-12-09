@@ -29,4 +29,11 @@ describe "TimeClocks" do
     page.should have_content("Total Time Worked: #{time_diff(user.work_times.last.clocked_out_at, user.work_times.last.clocked_in_at)}")
   end
 
+  it "manages users" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    click_link "Manage Users"
+    page.should have_content("#{user.first_name} #{user.last_name}")
+  end
+
 end
