@@ -22,5 +22,14 @@ describe UsersController do
         response.should redirect_to users_path
       end
   end
+  describe "DELETE destroy" do
+    it "deletes user" do
+      user = FactoryGirl.create(:user)
+      expect{
+        delete :destroy, id: user.id
+      }.to change(User,:count)
+      response.should redirect_to users_path
+    end
+  end
 
 end
