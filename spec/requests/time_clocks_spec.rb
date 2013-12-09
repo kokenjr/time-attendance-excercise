@@ -36,7 +36,7 @@ describe "TimeClocks" do
     page.should have_content("#{user.first_name} #{user.last_name}")
   end
 
-  it "add user" do
+  it "adds user" do
     visit users_path
     click_link "Add User"
     fill_in "First name", :with => "John"

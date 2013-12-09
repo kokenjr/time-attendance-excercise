@@ -1,0 +1,17 @@
+<h1> Add Users</h1>
+<%= form_for @user do |f| %>
+  <div class="fields">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br />
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br />
+    <%= f.label :employee_id, "Employee ID" %>
+    <%= f.text_field :employee_id %><br />
+    <%= f.label :role %>
+    <%= f.select :role, options_for_select(['EMPLOYEE', 'ADMINISTRATOR']) %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit "Add User" %>
+  </div>
+<% end %>
+
