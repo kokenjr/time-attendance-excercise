@@ -68,3 +68,5 @@ group :test do
   gem 'email_spec'
 end
 
+gem "twitter-bootstrap-rails"
+gem "less-rails"
