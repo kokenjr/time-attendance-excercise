@@ -18,5 +18,6 @@ class TimeClocksController < ApplicationController
 
   def status
     @user = User.find(params[:id])
+    @users = User.all
   end
 end

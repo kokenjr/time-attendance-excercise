@@ -1,0 +1,6 @@
+<%= user.employee_id %> (<%= user.first_name %> <%= user.last_name %>) <br />
+<% user.time_worked_past_week.each do |time| %>
+  Clocked In: <%= time.clocked_in_at %> |
+  Clocked Out: <%= time.clocked_out_at %> |
+  Total Time Worked: <%= time_diff(time.clocked_out_at, time.clocked_in_at) if time.clocked_out_at%><br />
+<% end %>

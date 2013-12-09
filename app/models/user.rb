@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     self.work_times.last.update_attributes(clocked_out_at: Time.now)
   end
 
+  def time_worked_past_week
+    self.work_times.where("clocked_in_at >= '#{7.days.ago}'")
+  end
+
 end

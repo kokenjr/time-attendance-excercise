@@ -62,8 +62,18 @@ describe "TimeClocks" do
     FactoryGirl.create(:work_time, :user => user)
     visit root_path
     fill_in "Employee ID", :with => admin.employee_id
-    page.should have_content("#{user.first_name} #{user.last_name}")
+    click_button "Clock In/Out"
+    page.should have_content("#{user.employee_id}")
     page.should have_content("Clocked In: #{user.work_times.last.clocked_in_at} | Clocked Out: #{user.work_times.last.clocked_out_at}")
+  end
+
+  it "doesn't show users report for non admin" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    fill_in "Employee ID", :with => user.employee_id
+    FactoryGirl.create(:work_time, :user => user, :clocked_out_at => nil)
+    click_button "Clock In/Out"
+    page.should_not have_content("Users Report")
   end
 
 end

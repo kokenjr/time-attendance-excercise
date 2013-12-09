@@ -26,4 +26,15 @@ describe User do
     user.clock_out
     user.work_times.last.clocked_out_at.should_not be_nil
   end
+
+  it "should get time worked the past week" do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:work_time, :user => user, :clocked_in_at => 3.days.ago, :clocked_out_at => 3.days.ago)
+    user.time_worked_past_week.count.should == 1
+  end
+  it "should not get time worked the past week" do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:work_time, :user => user, :clocked_in_at => 2.weeks.ago, :clocked_out_at => 2.weeks.ago)
+    user.time_worked_past_week.count.should == 0
+  end
 end
