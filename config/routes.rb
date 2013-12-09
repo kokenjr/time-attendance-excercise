@@ -1,4 +1,8 @@
 Listest::Application.routes.draw do
+  root "time_clocks#index"
+  get "time_clocks/index"
+  post "time_clocks/create"
+  get "time_clocks/status"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

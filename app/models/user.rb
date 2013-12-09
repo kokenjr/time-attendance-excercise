@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
     self.update_attributes(status: "CLOCKED IN")
     WorkTime.create(user_id: self.id, clocked_in_at: Time.now)
   end
+
 end
