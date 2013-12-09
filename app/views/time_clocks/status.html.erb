@@ -10,7 +10,7 @@
   Total Time Worked: <%= time_diff(@user.work_times.last.clocked_out_at, @user.work_times.last.clocked_in_at) %> <br /><br />
 <% end %>
 
-<br />
+<%= button_to "My Weekly Report", time_clocks_report_path(:user_id => @user.id) %> <br />
 
 <% if @user.role.try(:upcase) == "ADMINISTRATOR" && @user.status.try(:upcase) == "CLOCKED IN" %>
   <b>Users Report</b><br /><br />

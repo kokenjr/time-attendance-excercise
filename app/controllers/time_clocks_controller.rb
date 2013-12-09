@@ -20,4 +20,9 @@ class TimeClocksController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
   end
+
+  def report
+    @user = User.find(params[:user_id])
+  end
+
 end

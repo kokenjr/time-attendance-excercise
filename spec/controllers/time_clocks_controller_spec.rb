@@ -39,10 +39,18 @@ describe TimeClocksController do
     end
   end
 
-  describe "Post status" do
+  describe "GET status" do
     it "returns http success" do
       user = FactoryGirl.create(:user)
       get :status, :id => user.id
+      response.should be_success
+    end
+  end
+  
+  describe "POST report" do
+    it "returns http success" do
+      user = FactoryGirl.create(:user)
+      post :report, :user_id => user.id
       response.should be_success
     end
   end
