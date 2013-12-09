@@ -5,6 +5,8 @@
 <% if @user.status.try(:upcase) == "CLOCKED IN" %>
   Clocked In: <%= @user.work_times.last.clocked_in_at %>
 <% elsif @user.status.try(:upcase) == "CLOCKED OUT" %>
+  Clocked In: <%= @user.work_times.last.clocked_in_at %> |
   Clocked Out: <%= @user.work_times.last.clocked_out_at %> |
+  Total Time Worked: <%= time_diff(@user.work_times.last.clocked_out_at, @user.work_times.last.clocked_in_at) %> <br /><br />
 <% end %>
 
