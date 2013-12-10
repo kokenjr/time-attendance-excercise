@@ -1,1 +1,1 @@
-Database dump from my machine is located in: db/listestdbdump.sql
+Database dump location: db/listestdbdump.sql
